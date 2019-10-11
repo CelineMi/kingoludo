@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SaveGame;
 use App\Game;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class GameController extends Controller
     public function index()
     {
         \Log::debug('bonjour je suis dans la liste des jeux');
+        event(new SaveGame());
         $games = Game::all();
         return view('game.index')->with('games', $games);
     }

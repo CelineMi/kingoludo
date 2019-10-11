@@ -18,6 +18,7 @@
                             <li class="list-group-item">Nombre de joueurs : {{ $game->playersnumber }}</li>
                             <li class="list-group-item">Durée d'une partie : {{ $game->length }} mn</li>
                             <li class="list-group-item">Editeur : {{  $game->editor }} en {{ $game->year }}</li>
+                            <li class="list-group-item"><a href="{{ route('game.delete-my-game' , $game->id ) }}"><button class="btn btn-primary btn sm">Supprimer ma collection</button></a></li>
                         </ul>
                     </div>
                 </div>

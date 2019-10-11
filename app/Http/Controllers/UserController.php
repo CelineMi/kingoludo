@@ -16,4 +16,10 @@ class UserController extends Controller
         return view('user.myGames')->with('games', $games);
 
     }
+
+    public function deleteMyGame($id)
+    {
+        $game = Game::find($id);
+        $game->delete;
+    }
 }
