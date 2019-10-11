@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Game;
-use App\Model\GameModel;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -16,7 +15,8 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = GameModel::all();
+        \Log::debug('bonjour je suis dans la liste des jeux');
+        $games = Game::all();
         return view('game.index')->with('games', $games);
     }
 
@@ -51,7 +51,7 @@ class GameController extends Controller
             'comment' => 'required|max:2550',
         ]);
 
-        $game = new GameModel();
+        $game = new Game;
         $game->name = $request['name'];
         $game->editor = $request['editor'];
         $game->year = $request['year'];
@@ -73,7 +73,7 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(GameModel $game)
+    public function show(Game $game)
     {
         return view('game.show')->with('game', $game);
     }
@@ -84,7 +84,7 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(GameModel $game)
+    public function edit(Game $game)
     {
         //
         return view('game.edit')->with('game', $game);
@@ -111,7 +111,6 @@ class GameController extends Controller
             'comment' => 'required|max:2550',
         ]);
         //
-//        GameModel::update($request->find($id));
         $game = $request->find($id);
         $game->name = $request['name'];
         $game->editor = $request['editor'];
@@ -137,4 +136,15 @@ class GameController extends Controller
     {
         //
     }
+
+
+    public function addUserGame(Request $request, $id)
+    {
+        $user = auth()->user();
+        $game = Game::find($id);
+        $game->users()->attach($user->id);
+        return redirect(route('game.index'));
+    }
+
+
 }

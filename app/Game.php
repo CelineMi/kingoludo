@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Model;
+namespace App;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class GameModel extends Model
+class Game extends Model
 {
     protected $table = 'games';
     /*
@@ -194,9 +194,5 @@ class GameModel extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function scopeOfUser($query, $user)
-    {
-        return $query->where('user_id', $user);
-    }
 
 }

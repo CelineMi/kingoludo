@@ -22,3 +22,5 @@ Route::resource('/game', 'GameController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('show-my-games', 'UserController@showMyGames')->name('game.show-my-games');
+Route::get('game/add-user-game/{game}', 'GameController@addUserGame')->name('game.add-user-game');

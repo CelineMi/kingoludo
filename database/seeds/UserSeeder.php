@@ -15,14 +15,15 @@ class UserSeeder extends Seeder
         $faker = Faker::create();
 
         DB::table('users')->insert([
-            'pseudo' => $faker->name,
-            'firstname' => $faker->name,
-            'lastname' => $faker->name,
-            'role' => $faker-> randomElement($array = array ('Admin', 'member')),
-            'presentation' => $faker->paragraph(3),
-            'avatar' => $faker->imageUrl($width = 640, $height = 480, 'cats'),
-            'email' => $faker->email,
-            'password' => $faker->password()
+//            'pseudo' => $faker->name,
+//            'firstname' => $faker->name,
+//            'lastname' => $faker->name,
+//            'role' => $faker-> randomElement($array = array ('Admin', 'member')),
+//            'presentation' => $faker->paragraph(3),
+////            'avatar' => $faker->imageUrl($width = 640, $height = 480, 'cats'),
+//            'name' => $faker->name,
+//            'email' => $faker->email,
+//            'password' => $faker->password()
         ]);
     }
 }
