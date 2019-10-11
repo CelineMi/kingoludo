@@ -59,12 +59,12 @@ class User extends Authenticatable
     protected $avatar;
     /*
      * @string
-     */
-    protected $email;
-    /*
-     * @string
-     */
-    protected $password;
+//     */
+//    protected $email;
+//    /*
+//     * @string
+//     */
+//    protected $password;
 
 
 //    /**
